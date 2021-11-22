@@ -14,72 +14,40 @@
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
   
 
-  <!-- <script src="js/vconsole.min.js"></script> -->
-  <!-- <script>
-    var vConsole = new VConsole()
-    console.log("Hello World!")
-  </script> -->
-
-  <!--<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>-->
+  
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> 
   <script>
-    function createUniversalLink() {
-    }
-
-    async function shareMsg() {
-    }
-
-    function logOut() {
-    }
-
-    function closed() {
-    }
-
-    async function scanCode() {
-    }
-
-    function openWindow() {
-    }
-
-    async function getFriendship() {
-    }
-
-    async function sendMsg() {
-    }
-
-    function getContext() {
-    }
-
     
-
-    /*function getEnvironment() {
-      document.getElementById("os").append(liff.getOS())
-      document.getElementById("language").append(liff.getLanguage())
-      document.getElementById("version").append(liff.getVersion())
-    }*/
-
     async function main() {
-      //alert("LINE Developers x Skooldio")
+
       await liff.init({ liffId: "1656617518-bdOMWYgr" })
       if (liff.isLoggedIn()){
         getUserProfile()
       } else {
         liff.login()
       }
+    }
+    main()
 
       async function getUserProfile() {
       const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("userId").append(profile.userId)
       document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("statusMessage").append(profile.statusMessage)
+    }
+
+    function logOut() {
+      liff.logout()
+      window.location.reload()
+      
     }
       //getEnvironment()
       //getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
-    }
-    main()
+    
+    
   </script>
 </body>
 </html>
